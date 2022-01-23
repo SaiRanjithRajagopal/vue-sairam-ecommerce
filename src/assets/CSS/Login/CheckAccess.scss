@@ -1,0 +1,42 @@
+.form-signin {
+  width: 100%;
+  max-width: 430px;
+  padding: 15px;
+  margin: auto;
+}
+
+/* Login & Register */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  font-weight: 700;
+}
+
+.wrapper form {
+  padding: 2.5rem 3rem;
+}
+
+.wrapper form .btn {
+  background-color: #f3c93e;
+  border-color: 1px solid #f3c93e;
+  color: white;
+  margin-top: 2.5rem;
+}
+
+.wrapper form a {
+  font-size: 0.9rem;
+  color: grey;
+}
+
+#forgot_password_button,
+#login_btn {
+  width: 100%;
+}
+
+#forgotPasswordHeader,
+#loginHeader {
+  text-align: center;
+}
