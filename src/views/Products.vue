@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import DisplayProduct from "@/components/Products/Get/DisplayProducts.vue";
+import DisplayProduct from "@/components/Products/Get/Display_All_Products.vue";
 
 @Options({
   components: { DisplayProduct },

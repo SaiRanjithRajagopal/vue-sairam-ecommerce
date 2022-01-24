@@ -36,10 +36,7 @@
           <div class="col-md-3">
             <div class="info_contact">
               <h5>
-                <!-- <Link to="/" class="navbar-brand">
-                  <span>Minics</span>
-                </Link> -->
-                <router-link to="/" class="nav-link">
+                <router-link to="/" class="nav-link navbar-brand">
                   <span>Minics</span></router-link
                 >
               </h5>
@@ -67,8 +64,7 @@
               <h5>Useful Link</h5>
               <ul>
                 <li>
-                  <!-- <Link to="/">Home</Link> -->
-                  <router-link to="/" class="nav-link">Home</router-link>
+                  <router-link to="/">Home</router-link>
                 </li>
                 <li>
                   <router-link to="/about">About</router-link>
@@ -90,7 +86,7 @@
               <h5>Newsletter</h5>
               <form action="">
                 <input type="email" placeholder="Enter your email" />
-                <button>Subscribe</button>
+                <button type="button">Subscribe</button>
               </form>
               <div class="social_box">
                 <router-link to="/">
