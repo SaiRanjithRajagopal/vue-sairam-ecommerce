@@ -21,21 +21,13 @@ export const useProductStore = defineStore({
   },
   actions: {
     updateProductStore(receivedProducts: Products[]): void {
-      //Method1
       this.$patch({
         products: { ...receivedProducts },
         count: receivedProducts.length,
       });
-
-      //Method2
-      // this.$patch({
-      //   products: [...receivedProducts],
-      //   count: receivedProducts.length,
-      // });
     },
     updateSingleProductStore(receivedProducts: Products): void {
-      // this.$patch({ singleProduct: { ...receivedProducts } });
-      this.singleProduct = receivedProducts;
+      this.$patch({ singleProduct: { ...receivedProducts } });
     },
   },
 });

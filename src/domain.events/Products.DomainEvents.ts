@@ -8,12 +8,13 @@ import {
 export class ProductDomainEvents {
   product: Products | null = null;
   productStore = useProductStore();
+  products!: Products;
 
   async GetProduct_DomainEvents(): Promise<Products[]> {
     //fetch products
     const products = await GetAllProducts_Service();
 
-    //update the product store
+    //update the product store pinia
     this.productStore.updateProductStore(products);
 
     //return the product state

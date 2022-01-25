@@ -11,6 +11,11 @@
         <router-link to="/products" class="nav-link">Products</router-link>
       </li>
       <li class="nav-item">
+        <router-link to="/productslist" class="nav-link"
+          >Products List</router-link
+        >
+      </li>
+      <li class="nav-item">
         <router-link to="/whyus" class="nav-link">Why Us</router-link>
       </li>
       <li class="nav-item">

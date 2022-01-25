@@ -1,64 +1,58 @@
 <template>
-  <div class="row">
-    <div class="col">
-      <div class="product__details__pic">
-        <div>
-          <img class="d-block w-50" :src="product?.image" alt="" />
-        </div>
-      </div>
+  <div>
+    <div v-show="spinner" class="positionCenter">
+      <ProgressSpinner />
     </div>
-    <div class="col">
-      <div class="product__details__text">
-        <h3 class="h1">{{ product?.description }}</h3>
-        <p class="productId_FontSize">Product Id: {{ product?.id }}</p>
-        <!-- <div class="product__details__rating">
-          <DisplayRatings :rating="product?.rating" />
-        </div> -->
-        <div class="product__details__price">${{ product?.price }}</div>
-        <p>{{ product?.description }}</p>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <button class="btn btn-danger">-</button>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" />
-            </div>
-            <div class="col">
-              <button class="btn btn-primary">+</button>
+    <div v-show="!spinner">
+      <div class="grid">
+        <div class="col-4">
+          <div class="product__details__pic">
+            <div>
+              <img class="d-block w-50" :src="product?.image" alt="" />
             </div>
           </div>
         </div>
-        <div class="col-5"></div>
-        <div class="col">
-          <router-link to="/" type="button" class="btn btn-warning"
-            >Add to Cart</router-link
-          >
-        </div>
-      </div>
-      <div class="product__details__text">
-        <ul>
-          <li><b>Seller Name </b><span>Amazon</span></li>
-          <li><b>Availability </b><span class="greenColor">Available</span></li>
-          <li>
-            <b> Shipping </b>
-            <span>01 day shipping. <samp>Free pickup today</samp></span>
-          </li>
-        </ul>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col text-center">
-          <button type="button" class="btn btn-warning">Add Ratings</button>
-          <Bootstrap_Modal
-            show="{show}"
-            handleClose="{handleClose}"
-            handleSave="{handleSave}"
-          >
-            <!-- <AddRatings ratingChanged="{ratingChanged}" /> -->
-          </Bootstrap_Modal>
+        <div class="col-8">
+          <div class="product__details__text">
+            <h3 class="h1">{{ product?.description }}</h3>
+            <p class="productId_FontSize">Product Id: {{ product?.id }}</p>
+            <!-- <div class="product__details__rating">
+          <DisplayRatings :rating="product?.rating" />
+          </div> -->
+            <div class="product__details__price">${{ product?.price }}</div>
+            <p>{{ product?.description }}</p>
+          </div>
+          <div class="grid">
+            <div class="col-4">
+              <Button label="-" class="p-button-danger" @click="items--" />
+              <InputNumber v-model="items" />
+              <Button label="+" class="p-button-success" @click="items++" />
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+              <Button label="Add to Cart" class="p-button-danger" />
+            </div>
+          </div>
+          <div class="product__details__text">
+            <ul>
+              <li><b>Seller Name </b><span>Amazon</span></li>
+              <li>
+                <b>Availability </b><span class="greenColor">Available</span>
+              </li>
+              <li>
+                <b> Shipping </b>
+                <span>01 day shipping. <samp>Free pickup today</samp></span>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button type="button" class="btn btn-warning">Add Ratings</button>
+              <!-- <BootstrapModal>
+                <AddRatings ratingChanged="{ratingChanged}" />
+              </BootstrapModal> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -79,6 +73,8 @@ export default class Get_Single_Product extends Vue {
   url_data: string | string[] | undefined = undefined;
   product: Products | null = null;
   productStore = useProductStore();
+  spinner: boolean | null = true;
+  items: number | 0 = 0;
 
   async created(): Promise<void> {
     //Define the Product Events
@@ -89,11 +85,22 @@ export default class Get_Single_Product extends Vue {
     );
     //Get the Product from store
     this.product = await productDomainEvents.GetSingleProducts_FromStore();
+    this.spinner = false;
   }
 }
 </script>
 
 <style lang="scss">
+.positionCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 200px;
+  height: 200px;
+}
+
 .greenColor {
   color: green;
   font-weight: bold;
