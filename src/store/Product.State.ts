@@ -21,17 +21,23 @@ export const useProductStore = defineStore({
   },
   actions: {
     updateProductStore(receivedProducts: Products[]): void {
-      //Method1
-      this.$patch({
-        products: { ...receivedProducts },
-        count: receivedProducts.length,
-      });
+      //Method1 - converting aryay to object of arrays
+      // this.$patch({
+      //   products: { ...receivedProducts },
+      //   count: receivedProducts.length,
+      // });
 
       //Method2
       // this.$patch({
       //   products: [...receivedProducts],
       //   count: receivedProducts.length,
       // });
+
+      //Method3
+      //this.products = Object.values(receivedProducts);
+
+      //Method4
+      this.products = receivedProducts;
     },
     updateSingleProductStore(receivedProducts: Products): void {
       // this.$patch({ singleProduct: { ...receivedProducts } });
